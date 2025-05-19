@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmere RPG Character Sheet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Cosmere RPG Character Sheet</h1>
+            <div class="character-controls">
+                <button id="new-character">New Character</button>
+                <button id="save-character">Save Character</button>
+                <select id="load-character">
+                    <option value="">Load Character</option>
+                </select>
+            </div>
+        </header>
+
+        <div class="character-sheet">
+            <section class="basics">
+                <h2>Character Basics</h2>
+                <div class="form-group">
+                    <label for="character-name">Name:</label>
+                    <input type="text" id="character-name">
+                </div>
+                <div class="form-group">
+                    <label for="ancestry">Ancestry:</label>
+                    <select id="ancestry">
+                        <option value="human">Human</option>
+                        <option value="singer">Singer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="path">Path:</label>
+                    <select id="path">
+                        <option value="agent">Agent</option>
+                        <option value="envoy">Envoy</option>
+                        <option value="hunter">Hunter</option>
+                        <option value="leader">Leader</option>
+                        <option value="scholar">Scholar</option>
+                        <option value="warrior">Warrior</option>
+                    </select>
+                </div>
+                <div id="path-specialties" class="form-group">
+                    <label for="specialty">Specialty:</label>
+                    <select id="specialty">
+                        <!-- Will be populated based on selected path -->
+                    </select>
+                </div>
+            </section>
+
+            <section class="attributes">
+                <h2>Attributes</h2>
+                <div class="attributes-grid">
+                    <div class="attribute">
+                        <label for="attr-might">Might</label>
+                        <input type="number" id="attr-might" min="1" max="10" value="2">
+                    </div>
+                    <div class="attribute">
+                        <label for="attr-coordination">Coordination</label>
+                        <input type="number" id="attr-coordination" min="1" max="10" value="2">
+                    </div>
+                    <div class="attribute">
+                        <label for="attr-perception">Perception</label>
+                        <input type="number" id="attr-perception" min="1" max="10" value="2">
+                    </div>
+                    <div class="attribute">
+                        <label for="attr-intelligence">Intelligence</label>
+                        <input type="number" id="attr-intelligence" min="1" max="10" value="2">
+                    </div>
+                    <div class="attribute">
+                        <label for="attr-presence">Presence</label>
+                        <input type="number" id="attr-presence" min="1" max="10" value="2">
+                    </div>
+                    <div class="attribute">
+                        <label for="attr-connection">Connection</label>
+                        <input type="number" id="attr-connection" min="1" max="10" value="2">
+                    </div>
+                </div>
+                <div class="points-remaining">
+                    <span>Attribute Points: <span id="attribute-points">12</span></span>
+                </div>
+            </section>
+
+            <section class="skills">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill">
+                        <label for="skill-athletics">Athletics</label>
+                        <input type="number" id="skill-athletics" min="0" max="5" value="0">
+                    </div>
+                    <div class="skill">
+                        <label for="skill-authority">Authority</label>
+                        <input type="number" id="skill-authority" min="0" max="5" value="0">
+                    </div>
+                    <div class="skill">
+                        <label for="skill-endurance">Endurance</label>
+                        <input type="number" id="skill-endurance" min="0" max="5" value="0">
+                    </div>
+                    <div class="skill">
+                        <label for="skill-legerdemain">Legerdemain</label>
+                        <input type="number" id="skill-legerdemain" min="0" max="5" value="0">
+                    </div>
+                    <div class="skill">
+                        <label for="skill-lore">Lore</label>
+                        <input type="number" id="skill-lore" min="0" max="5" value="0">
+                    </div>
+                </div>
+                <div class="points-remaining">
+                    <span>Skill XP: <span id="skill-points">5</span></span>
+                </div>
+            </section>
+
+            <section class="talents">
+                <h2>Talents</h2>
+                <div id="talents-container">
+                    <!-- Will be populated by JS -->
+                </div>
+                <button id="add-talent">Add Talent</button>
+                <div class="points-remaining">
+                    <span>Talent XP: <span id="talent-xp">8</span></span>
+                </div>
+            </section>
+
+            <section class="investiture">
+                <h2>Investiture (Magic)</h2>
+                <div class="form-group">
+                    <label for="investiture-type">Type:</label>
+                    <select id="investiture-type">
+                        <option value="none">None</option>
+                        <option value="allomancy">Allomancy</option>
+                        <option value="feruchemy">Feruchemy</option>
+                        <option value="surgebinding">Surgebinding</option>
+                        <option value="awakening">Awakening</option>
+                    </select>
+                </div>
+                <div id="investiture-details">
+                    <!-- Will be populated based on selected investiture type -->
+                </div>
+                <div class="points-remaining">
+                    <span>Investiture XP: <span id="investiture-xp">7</span></span>
+                </div>
+            </section>
+
+            <section class="goals">
+                <h2>Goals</h2>
+                <div id="goals-container">
+                    <div class="goal">
+                        <input type="text" placeholder="Enter a goal...">
+                        <button class="remove-goal">×</button>
+                    </div>
+                </div>
+                <button id="add-goal">Add Goal</button>
+            </section>
+
+            <section class="equipment">
+                <h2>Equipment</h2>
+                <div class="form-group">
+                    <label for="marks">Marks (Currency):</label>
+                    <input type="number" id="marks" value="20">
+                </div>
+                <div id="equipment-container">
+                    <div class="equipment-item">
+                        <input type="text" placeholder="Item name">
+                        <input type="text" placeholder="Description">
+                        <button class="remove-equipment">×</button>
+                    </div>
+                </div>
+                <button id="add-equipment">Add Item</button>
+            </section>
+
+            <section class="pools">
+                <h2>Pools</h2>
+                <div class="pools-grid">
+                    <div class="pool">
+                        <label for="pool-physical">Physical Pool</label>
+                        <input type="number" id="pool-physical" min="0">
+                        <span>Max: <span id="max-physical">3</span></span>
+                    </div>
+                    <div class="pool">
+                        <label for="pool-mental">Mental Pool</label>
+                        <input type="number" id="pool-mental" min="0">
+                        <span>Max: <span id="max-mental">3</span></span>
+                    </div>
+                    <div class="pool">
+                        <label for="pool-social">Social Pool</label>
+                        <input type="number" id="pool-social" min="0">
+                        <span>Max: <span id="max-social">3</span></span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="notes">
+                <h2>Notes</h2>
+                <textarea id="character-notes" rows="5"></textarea>
+            </section>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
