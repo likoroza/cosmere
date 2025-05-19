@@ -1,0 +1,176 @@
+/* Base Styles */
+:root {
+    --primary: #1f3a60;
+    --secondary: #6d4c41;
+    --accent: #d6a86e;
+    --light: #f5f5f5;
+    --dark: #333;
+    --success: #43a047;
+    --danger: #e53935;
+    --info: #1e88e5;
+    --background: #f9f7f2;
+    --card-bg: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: var(--background);
+    color: var(--dark);
+}
+
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--accent);
+}
+
+h1, h2, h3 {
+    color: var(--primary);
+}
+
+h1 {
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--accent);
+}
+
+button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #2a4c7c;
+}
+
+input, select, textarea {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    font-family: inherit;
+}
+
+/* Character Sheet Styles */
+.character-sheet {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.character-sheet > section {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+/* Attributes Grid */
+.attributes-grid, .skills-grid, .pools-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.attribute, .skill, .pool {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Talents Section */
+#talents-container, #goals-container, #equipment-container {
+    margin-bottom: 1rem;
+}
+
+.talent, .goal, .equipment-item {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    align-items: center;
+}
+
+.remove-talent, .remove-goal, .remove-equipment {
+    background-color: var(--danger);
+    color: white;
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* Points Remaining */
+.points-remaining {
+    margin-top: 1rem;
+    font-weight: 500;
+    color: var(--info);
+}
+
+/* Notes Section */
+.notes {
+    grid-column: 1 / -1;
+}
+
+#character-notes {
+    resize: vertical;
+    height: 120px;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .character-sheet {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .character-controls {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+}
